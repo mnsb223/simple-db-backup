@@ -39,3 +39,12 @@
 
 # debug information files
 *.dwo
+
+# Visual Studio local state
+.vs/
+
+# CMake build output
+out/
+build/
+CMakeCache.txt
+CMakeFiles/
