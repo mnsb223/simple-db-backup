@@ -1,0 +1,10 @@
+[database]
+host=localhost
+port=5432
+dbname=postgres
+user=postgres
+password=CHANGE_ME
+
+[backup]
+pg_bin=C:/Program Files/PostgreSQL/18/bin
+output_dir=C:/backups

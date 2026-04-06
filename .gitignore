@@ -43,6 +43,9 @@
 # Visual Studio local state
 .vs/
 
+# Local DB credentials — use database_config.ini.example as a template
+database_config.ini
+
 # CMake build output
 out/
 build/
