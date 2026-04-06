@@ -97,3 +97,32 @@ if(WIN32)
         COMMAND_EXPAND_LISTS
     )
 endif()
+
+# ---- Tests ----
+option(BUILD_TESTS "Build unit tests" OFF)
+
+if(BUILD_TESTS)
+    include(FetchContent)
+    FetchContent_Declare(
+        Catch2
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+        GIT_TAG        v3.5.3
+    )
+    FetchContent_MakeAvailable(Catch2)
+
+    enable_testing()
+
+    add_executable(simple_db_backup_tests
+        tests/test_main.cpp
+        src/config.cpp
+        src/backup.cpp
+    )
+    target_include_directories(simple_db_backup_tests PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/"
+    )
+    target_link_libraries(simple_db_backup_tests PRIVATE
+        Catch2::Catch2WithMain
+    )
+
+    add_test(NAME unit_tests COMMAND simple_db_backup_tests)
+endif()
